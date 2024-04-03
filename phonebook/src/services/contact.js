@@ -1,8 +1,6 @@
 import axios from "axios"
 
-// const contactsUrl = '/api/contacts'
-
-const contactsUrl = 'http://localhost:3001/api/contacts'
+const contactsUrl = '/api/contacts'
 
 const getContacts = () => axios.get(contactsUrl)
 
