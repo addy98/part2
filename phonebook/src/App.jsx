@@ -19,7 +19,7 @@ const App = () => {
       .then(response => {
         setContacts(response.data)
       })
-  }, [])
+  }, [contacts])
 
   // input field/state change handlers
   const handleNameChange = (event) => setNewName(event.target.value)
@@ -40,7 +40,6 @@ const App = () => {
       contactsService
         .updateContact(contactObject, contactId)
         .then(response => {
-          console.log(response.data)
           setContacts(contacts.filter(contact => contact.name !== contactObject.name).concat(response.data))
           setNewName('')
           setNewNumber('')
