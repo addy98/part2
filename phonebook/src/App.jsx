@@ -49,7 +49,7 @@ const App = () => {
           }, 5000)
         })
         .catch(error => 
-          setNotification({ message: `${contactObject.name} has already been removed from the server`, type: 'remove' }),
+          setNotification({ message: error.response.data.error, type: 'red'}),
           setTimeout(() => {
             setNotification({ message: null, type: '' })
           }, 5000))
@@ -65,7 +65,11 @@ const App = () => {
             setNotification({ message: null, type: '' })
           }, 5000)
         })
-        .catch(error => console.log('failed to create'))
+        .catch(error => 
+          setNotification({ message: error.response.data.error, type: 'red'}),
+          setTimeout(() => {
+            setNotification({ message: null, type: '' })
+          }, 5000))
     }
   }
 
@@ -75,7 +79,7 @@ const App = () => {
       .deleteContact(contact.id)
       .then(response => {
         setContacts(contacts.filter(contact => contact.id !== response.data.id))
-        setNotification({ message: `${contact.name} removed from phonebook`, type: 'remove' })
+        setNotification({ message: `${contact.name} removed from phonebook`, type: 'red' })
         setTimeout(() => {
           setNotification({ message: null, type: '' })
         }, 5000)
