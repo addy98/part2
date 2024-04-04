@@ -19,7 +19,7 @@ const App = () => {
       .then(response => {
         setContacts(response.data)
       })
-  }, [contacts])
+  }, [])
 
   // input field/state change handlers
   const handleNameChange = (event) => setNewName(event.target.value)
